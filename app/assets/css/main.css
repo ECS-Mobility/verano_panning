@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #283b4c;
+  --color-dark: #1a2a38;
+  --color-steel: #4a6580;
+  --color-steel2: #5b7c99;
+  --color-l3: #9baab8;
+  --color-greyt: #5a6470;
+  --color-rowa: #f5f7f9;
+  --color-vac: #c9d0d8;
+  --color-vacb: #eef1f4;
+  --color-block: #b23a48;
+  --font-sans: "Calibri", "Segoe UI", system-ui, sans-serif;
+}
+
+html { font-family: var(--font-sans); color: var(--color-navy); -webkit-font-smoothing: antialiased; }
+body { background: #f7f9fb; }
+
+/* --- Keyframes --- */
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes soft-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(40,59,76,0); }
+  50% { box-shadow: 0 0 0 4px rgba(91,124,153,0.18); }
+}
+
+.bar-grow { transform-origin: left center; animation: grow-x .55s cubic-bezier(.22,1,.36,1) both; }
+.fade-up { animation: fade-up .45s ease both; }
+.glow-current { animation: soft-glow 2.4s ease-in-out infinite; }
+
+/* --- Gantt grid --- */
+.gantt-grid { display: grid; grid-template-columns: var(--grid); align-items: stretch; }
+.wk { border-left: 1px solid #eef1f4; }
+
+/* --- Anillo de progreso --- */
+.ring-value { transition: stroke-dashoffset .7s cubic-bezier(.22,1,.36,1); }
+
+/* --- Transición de página (NuxtPage) --- */
+.page-enter-active, .page-leave-active { transition: opacity .22s ease, transform .22s ease; }
+.page-enter-from { opacity: 0; transform: translateY(8px); }
+.page-leave-to { opacity: 0; transform: translateY(-8px); }
+
+/* --- Transición de listas (TransitionGroup) --- */
+.list-enter-active, .list-leave-active { transition: all .3s cubic-bezier(.22,1,.36,1); }
+.list-enter-from { opacity: 0; transform: translateY(-6px); }
+.list-leave-to { opacity: 0; transform: translateX(12px); }
+.list-leave-active { position: absolute; width: 100%; }
+.list-move { transition: transform .3s cubic-bezier(.22,1,.36,1); }
+
+/* --- Transición de modal --- */
+.modal-enter-active, .modal-leave-active { transition: opacity .2s ease; }
+.modal-enter-active .modal-panel, .modal-leave-active .modal-panel { transition: transform .2s ease, opacity .2s ease; }
+.modal-enter-from, .modal-leave-to { opacity: 0; }
+.modal-enter-from .modal-panel, .modal-leave-to .modal-panel { transform: scale(.96) translateY(8px); opacity: 0; }
+
+/* --- Accesibilidad: respeta reduce-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
