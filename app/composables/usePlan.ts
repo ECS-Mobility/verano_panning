@@ -83,7 +83,7 @@ export function usePlan() {
   const overall = computed(() => overallProgress(tasks.value))
   const byLevel = computed(() => progressByLevel(tasks.value))
   const counts = computed(() => countsByEstado(tasks.value))
-  const upcoming = computed(() => upcomingMilestones(tasks.value, today.value, 5))
+  const upcoming = computed(() => upcomingMilestones(tasks.value, today.value, 8, 14))
   const risk = computed(() => riskBreakdown(tasks.value, sprints.value, today.value))
   const overdue = computed(() => overdueSubtasks(tasks.value, today.value))
 
@@ -199,6 +199,13 @@ export function usePlan() {
     touch()
   }
 
+  function setSubtaskDone(subId: string, done: boolean) {
+    for (const t of doc.value.tasks) {
+      const s = t.subtasks.find(x => x.id === subId)
+      if (s) { s.estado = done ? 'Completada' : 'Pendiente'; s.pct = done ? 100 : 0; rollupTask(t); touch(); return }
+    }
+  }
+
   function deleteSubtask(taskId: string, subId: string) {
     const t = findTask(taskId); if (!t) return
     t.subtasks = t.subtasks.filter(s => s.id !== subId)
@@ -252,7 +259,7 @@ export function usePlan() {
     load, save, replaceDoc, resetToSeed, exportNow, levels: LEVELS,
     // acciones
     createTask, updateTask, deleteTask, duplicateTask,
-    addSubtask, updateSubtask, deleteSubtask, moveSubtask,
+    addSubtask, updateSubtask, deleteSubtask, moveSubtask, setSubtaskDone,
     assignSubtaskToSprint, autoAssignSprints, updateSprint, updateSettings
   }
 }

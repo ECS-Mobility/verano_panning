@@ -1,7 +1,8 @@
 <template>
-  <div class="text-right leading-tight">
-    <p class="text-xs sm:text-sm text-navy font-medium capitalize">{{ dateLabel }}</p>
-    <p class="text-[11px] font-semibold flex items-center justify-end gap-1.5" :class="sprintColor">
+  <div class="leading-tight">
+    <p class="text-[11px] uppercase tracking-wide text-greyt">Hoy</p>
+    <p class="text-sm text-navy font-semibold capitalize">{{ dateLabel }}</p>
+    <p class="text-[11px] font-medium flex items-center gap-1.5 mt-1" :class="sprintColor">
       <span class="w-1.5 h-1.5 rounded-full" :class="dotColor" />{{ sprintLabel }}
     </p>
   </div>
@@ -17,9 +18,9 @@ const dateLabel = computed(() => fmtLong(today.value))
 const sprintLabel = computed(() => {
   const { sprint, kind } = currentSprint.value
   if (!sprint) return 'Sin sprint'
-  if (kind === 'before') return `Empieza el ${fmt(sprint.monday)}`
+  if (kind === 'before') return `Empieza ${fmt(sprint.monday)}`
   if (kind === 'after') return 'Verano finalizado'
-  return `Sprint S${sprint.n} · ${fmt(sprint.monday)}–${fmt(sprint.friday)}`
+  return `Sprint S${sprint.n}`
 })
 
 const active = computed(() => ['during', 'weekend-gap'].includes(currentSprint.value.kind))

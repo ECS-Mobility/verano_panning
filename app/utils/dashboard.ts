@@ -66,10 +66,14 @@ export interface UpcomingMilestone {
   overdue: boolean
 }
 
-/** Próximos hitos (subtareas milestone con fecha fin y sin terminar), ordenados por fecha. */
-export function upcomingMilestones(tasks: Task[], today: ISODate, n = 5): UpcomingMilestone[] {
+/**
+ * Próximos hitos (subtareas milestone con fecha fin y sin terminar), ordenados por fecha.
+ * Si se pasa `withinDays`, solo incluye los que cierran dentro de esa ventana (los vencidos
+ * siguen apareciendo porque su daysLeft es negativo).
+ */
+export function upcomingMilestones(tasks: Task[], today: ISODate, n = 5, withinDays?: number): UpcomingMilestone[] {
   const t = d(today)
-  return tasks.flatMap(task =>
+  let list = tasks.flatMap(task =>
     task.subtasks.filter(s => isMilestone(s) && s.end && !isDone(s)).map(s => ({
       sub: s,
       taskCode: task.code,
@@ -79,6 +83,8 @@ export function upcomingMilestones(tasks: Task[], today: ISODate, n = 5): Upcomi
       overdue: d(s.end!) < t
     }))
   )
+  if (withinDays != null) list = list.filter(x => x.daysLeft <= withinDays)
+  return list
     .sort((a, b) => (a.endISO < b.endISO ? -1 : a.endISO > b.endISO ? 1 : 0))
     .slice(0, n)
 }

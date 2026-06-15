@@ -11,6 +11,8 @@
   --color-vac: #c9d0d8;
   --color-vacb: #eef1f4;
   --color-block: #b23a48;
+  --color-done: #3f9a73;
+  --color-prog: #e8a13c;
   --font-sans: "Calibri", "Segoe UI", system-ui, sans-serif;
 }
 
@@ -28,10 +30,6 @@ body { background: #f7f9fb; }
 .bar-grow { transform-origin: left center; animation: grow-x .55s cubic-bezier(.22,1,.36,1) both; }
 .fade-up { animation: fade-up .45s ease both; }
 .glow-current { animation: soft-glow 2.4s ease-in-out infinite; }
-
-/* --- Gantt grid --- */
-.gantt-grid { display: grid; grid-template-columns: var(--grid); align-items: stretch; }
-.wk { border-left: 1px solid #eef1f4; }
 
 /* --- Anillo de progreso --- */
 .ring-value { transition: stroke-dashoffset .7s cubic-bezier(.22,1,.36,1); }

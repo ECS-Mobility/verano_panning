@@ -26,38 +26,42 @@ export const SEED_TASKS: Task[] = [
   {
     id: 't:PAC', code: 'PAC', name: 'PAC (ingeniería)', resp: 'Erik', level: 'L1', type: 'task',
     groupLabel: 'Gobierno del dato y digitalización · 3 iniciativas en paralelo',
-    start: '2026-06-22', end: '2026-08-28', estado: 'Pendiente', pct: 0,
+    start: '2026-06-15', end: '2026-09-01', estado: 'Pendiente', pct: 0,
     subtasks: [
-      { id: 's5', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-22', end: '2026-07-10', estado: 'Pendiente', pct: 0, sprintId: null },
-      { id: 's6', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-07-27', end: '2026-08-28', estado: 'Pendiente', pct: 0, sprintId: null }
+      { id: 's5', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-15', end: '2026-06-26', estado: 'Pendiente', pct: 0, sprintId: null },
+      { id: 's6', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-06-29', end: '2026-07-03', estado: 'Pendiente', pct: 0, sprintId: null, milestone: true },
+      { id: 's6c', name: 'Fase 3 · Desarrollo', resp: 'Erik', start: '2026-07-06', end: '2026-09-01', estado: 'Pendiente', pct: 0, sprintId: null }
     ]
   },
   {
     id: 't:SIG', code: 'SIG', name: 'Sigdot (ingeniería)', resp: 'Erik', level: 'L1', type: 'task',
     groupLabel: 'Gobierno del dato y digitalización · 3 iniciativas en paralelo',
-    start: '2026-06-22', end: '2026-08-28', estado: 'Pendiente', pct: 0,
+    start: '2026-06-15', end: '2026-09-01', estado: 'Pendiente', pct: 0,
     subtasks: [
-      { id: 's7', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-22', end: '2026-07-10', estado: 'Pendiente', pct: 0, sprintId: null },
-      { id: 's8', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-07-27', end: '2026-08-28', estado: 'Pendiente', pct: 0, sprintId: null }
+      { id: 's7', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-15', end: '2026-06-26', estado: 'Pendiente', pct: 0, sprintId: null },
+      { id: 's8', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-06-29', end: '2026-07-03', estado: 'Pendiente', pct: 0, sprintId: null, milestone: true },
+      { id: 's8c', name: 'Fase 3 · Desarrollo', resp: 'Erik', start: '2026-07-06', end: '2026-09-01', estado: 'Pendiente', pct: 0, sprintId: null }
     ]
   },
   {
     id: 't:MES', code: 'MES', name: 'MES Izaro', resp: 'Erik', level: 'L1', type: 'task',
     groupLabel: 'Gobierno del dato y digitalización · 3 iniciativas en paralelo',
-    start: '2026-06-22', end: '2026-08-28', estado: 'Pendiente', pct: 0,
+    start: '2026-06-15', end: '2026-09-01', estado: 'Pendiente', pct: 0,
     subtasks: [
-      { id: 's9', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-22', end: '2026-07-10', estado: 'Pendiente', pct: 0, sprintId: null },
-      { id: 's10', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-07-27', end: '2026-08-28', estado: 'Pendiente', pct: 0, sprintId: null }
+      { id: 's9', name: 'Fase 1 · Análisis', resp: 'Erik', start: '2026-06-15', end: '2026-06-26', estado: 'Pendiente', pct: 0, sprintId: null },
+      { id: 's10', name: 'Fase 2 · Planificación y propuesta', resp: 'Erik', start: '2026-06-29', end: '2026-07-03', estado: 'Pendiente', pct: 0, sprintId: null, milestone: true },
+      { id: 's10c', name: 'Fase 3 · Desarrollo', resp: 'Erik', start: '2026-07-06', end: '2026-09-01', estado: 'Pendiente', pct: 0, sprintId: null }
     ]
   },
 
   // --- L2 · Prioridad media ---
   {
     id: 't:CLA', code: 'CLA', name: 'Análisis necesidades licencias Claude', resp: 'Erik', level: 'L2', type: 'task',
-    start: '2026-06-15', end: '2026-06-22', estado: 'Pendiente', pct: 0,
+    start: '2026-06-15', end: '2026-06-29', estado: 'Pendiente', pct: 0,
     subtasks: [
-      { id: 's11', name: 'Identificar perfiles/usuarios con mayor utilidad', resp: 'Erik', start: '2026-06-15', end: '2026-06-19', estado: 'Pendiente', pct: 0, sprintId: null },
-      { id: 's12', name: 'Solicitar licencias', resp: 'Erik', start: '2026-06-22', end: '2026-06-22', estado: 'Pendiente', pct: 0, sprintId: null, milestone: true }
+      { id: 's11', name: 'Decidir quién necesita licencia', resp: 'Erik', start: '2026-06-15', end: '2026-06-22', estado: 'Pendiente', pct: 0, sprintId: null },
+      { id: 's12', name: 'Solicitar y comprar licencias', resp: 'Erik', start: '2026-06-22', end: '2026-06-22', estado: 'Pendiente', pct: 0, sprintId: null, milestone: true },
+      { id: 's12b', name: 'Onboarding de usuarios', resp: 'Erik', start: '2026-06-22', end: '2026-06-29', estado: 'Pendiente', pct: 0, sprintId: null }
     ]
   },
   {

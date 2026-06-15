@@ -39,6 +39,7 @@
       No hay tareas que coincidan. <button class="text-steel hover:text-navy underline" @click="openNew">Crear una</button>.
     </p>
 
+    <TaskWizard v-model="wizardOpen" />
     <TaskFormModal v-model="modalOpen" :task="editTask" />
     <ConfirmDialog v-model="confirmOpen" title="Eliminar tarea" danger confirm-text="Eliminar" :message="deleteMsg" @confirm="doDelete" />
   </div>
@@ -80,10 +81,11 @@ const grouped = computed(() =>
     }))
     .filter(g => g.tasks.length))
 
-// --- modal / borrado ---
+// --- wizard (crear) / modal (editar) / borrado ---
+const wizardOpen = ref(false)
 const modalOpen = ref(false)
 const editTask = ref<Task | null>(null)
-function openNew() { editTask.value = null; modalOpen.value = true }
+function openNew() { wizardOpen.value = true }
 function openEdit(t: Task) { editTask.value = t; modalOpen.value = true }
 
 const confirmOpen = ref(false)

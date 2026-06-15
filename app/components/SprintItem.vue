@@ -1,10 +1,17 @@
 <template>
-  <div class="rounded-lg border border-vac/50 bg-white px-2.5 py-2 text-sm">
-    <div class="flex items-start gap-1.5">
-      <span class="w-2 h-2 rounded-full mt-1.5 shrink-0" :class="ESTADO_DOT[sub.estado]" />
+  <div class="rounded-lg border border-vac/50 border-l-4 bg-white px-2.5 py-2 text-sm" :class="ESTADO_BORDER[sub.estado]">
+    <div class="flex items-start gap-2">
+      <button type="button" @click="toggle"
+        class="w-5 h-5 mt-0.5 rounded-md border-2 flex items-center justify-center shrink-0 transition-colors"
+        :class="isDone(sub) ? 'bg-done border-done text-white' : 'border-vac hover:border-steel'"
+        :aria-label="isDone(sub) ? 'Marcar pendiente' : 'Marcar hecho'" :aria-pressed="isDone(sub)">
+        <svg v-if="isDone(sub)" viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+      </button>
       <div class="min-w-0 flex-1">
-        <p class="text-navy leading-tight truncate"><span v-if="sub.milestone" class="text-steel2">◆ </span>{{ sub.name }}</p>
-        <p class="text-[10px] text-greyt font-mono">{{ code }} · {{ sub.pct }}%</p>
+        <p class="leading-tight truncate" :class="isDone(sub) ? 'text-greyt line-through' : 'text-navy'">
+          <span v-if="sub.milestone" class="text-steel2">◆ </span>{{ sub.name }}
+        </p>
+        <p class="text-[10px] text-greyt font-mono">{{ code }}</p>
       </div>
     </div>
     <div class="flex items-center gap-1 mt-1.5">
@@ -21,14 +28,15 @@
 
 <script setup lang="ts">
 import type { Subtask } from '~/types'
-import { ESTADO_DOT, d } from '~/utils/plan'
+import { ESTADO_BORDER, d } from '~/utils/plan'
+import { isDone } from '~/utils/rollup'
 
 const props = defineProps<{ sub: Subtask; code: string }>()
-const { sprints, assignSubtaskToSprint } = usePlan()
+const { sprints, assignSubtaskToSprint, setSubtaskDone } = usePlan()
 
 function parse(v: string): number | null { return v === '' ? null : Number(v) }
+function toggle() { setSubtaskDone(props.sub.id, !isDone(props.sub)) }
 
-// Aviso si las fechas de la subtarea caen fuera de la semana del sprint asignado.
 const warn = computed(() => {
   const s = props.sub
   if (s.sprintId == null) return ''

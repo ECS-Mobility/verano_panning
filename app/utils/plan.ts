@@ -10,8 +10,24 @@ export const LEVEL_PRIORITY: Record<Level, string> = {
   L0: 'Continuo', L1: 'Prioridad alta', L2: 'Prioridad media', L3: 'Prioridad baja'
 }
 export const ESTADO_DOT: Record<Estado, string> = {
-  'Pendiente': 'bg-vac', 'En curso': 'bg-steel2', 'Bloqueada': 'bg-block',
-  'Completada': 'bg-steel', 'Continuo': 'bg-steel'
+  'Pendiente': 'bg-vac', 'En curso': 'bg-prog', 'Bloqueada': 'bg-block',
+  'Completada': 'bg-done', 'Continuo': 'bg-steel'
+}
+// Relleno de barra del Gantt según estado (color vivo sobre el track del nivel).
+export const ESTADO_BAR: Record<Estado, string> = {
+  'Pendiente': 'bg-steel/45', 'En curso': 'bg-prog', 'Bloqueada': 'bg-block',
+  'Completada': 'bg-done', 'Continuo': 'bg-steel'
+}
+// Pastilla coloreada para los badges de estado (fondo tenue + texto).
+export const ESTADO_PILL: Record<Estado, string> = {
+  'Pendiente': 'bg-vac/40 text-greyt', 'En curso': 'bg-prog/20 text-[#8a5712]',
+  'Bloqueada': 'bg-block/15 text-block', 'Completada': 'bg-done/15 text-done',
+  'Continuo': 'bg-steel/15 text-steel'
+}
+// Borde izquierdo coloreado por estado (para separar/identificar subtareas).
+export const ESTADO_BORDER: Record<Estado, string> = {
+  'Pendiente': 'border-l-vac', 'En curso': 'border-l-prog', 'Bloqueada': 'border-l-block',
+  'Completada': 'border-l-done', 'Continuo': 'border-l-steel'
 }
 
 // --- Helpers de fecha (siempre en hora LOCAL para evitar drift UTC) --------
