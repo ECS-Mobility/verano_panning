@@ -29,7 +29,7 @@
       <StatCard label="En riesgo" :value="risk.total" tone="block" :risk="true" :hint="riskHint" :icon="ICON.alert" />
     </section>
 
-    <div class="grid lg:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 gap-6">
       <!-- Sprint actual -->
       <section class="fade-up rounded-xl border border-vac/60 bg-white p-5 shadow-sm">
         <div class="flex items-center justify-between mb-3">

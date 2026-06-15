@@ -20,7 +20,10 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Seguimiento interno de tareas · Transformación Digital · ECS Mobility' },
         { name: 'theme-color', content: '#283b4c' }
       ],
-      link: [{ rel: 'icon', href: '/ecs-logo.png' }]
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'alternate icon', href: '/ecs-logo.png' }
+      ]
     }
   }
 })
