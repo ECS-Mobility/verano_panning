@@ -1,12 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Plan Verano 2026">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#34506a"/>
-      <stop offset="1" stop-color="#1a2a38"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2bb6c4"/>
+      <stop offset="1" stop-color="#1f7e96"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd166"/>
+      <stop offset="1" stop-color="#f4912b"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1.5"/>
-  <circle cx="46" cy="18" r="5.5" fill="#e0911f"/>
-  <path d="M16 34 l9.5 9.5 L46.5 22" fill="none" stroke="#3f9a73" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="64" height="64" rx="15" fill="url(#sky)"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+  <g stroke="url(#sun)" stroke-width="3.6" stroke-linecap="round">
+    <line x1="32" y1="7" x2="32" y2="14"/>
+    <line x1="32" y1="50" x2="32" y2="57"/>
+    <line x1="7" y1="32" x2="14" y2="32"/>
+    <line x1="50" y1="32" x2="57" y2="32"/>
+    <line x1="14.5" y1="14.5" x2="19.4" y2="19.4"/>
+    <line x1="44.6" y1="44.6" x2="49.5" y2="49.5"/>
+    <line x1="49.5" y1="14.5" x2="44.6" y2="19.4"/>
+    <line x1="19.4" y1="44.6" x2="14.5" y2="49.5"/>
+  </g>
+  <circle cx="32" cy="32" r="15.5" fill="url(#sun)"/>
+  <path d="M24.5 32.5 l5.5 5.5 L41 25.5" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
